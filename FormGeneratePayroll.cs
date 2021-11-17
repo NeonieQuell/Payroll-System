@@ -29,18 +29,25 @@ namespace PayrollSystem
 
         private void dataGridViewEmp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dataGridViewEmp.Rows[e.RowIndex];
+            try
+            {
+                DataGridViewRow row = dataGridViewEmp.Rows[e.RowIndex];
 
-            textBoxEmpID.Text = row.Cells[0].Value.ToString();
-            textBoxFName.Text = row.Cells[6].Value.ToString();
-            textBoxLName.Text = row.Cells[7].Value.ToString();
-            textBoxDepartment.Text = row.Cells[1].Value.ToString();
-            textBoxPosition.Text = row.Cells[2].Value.ToString();
-            textBoxHoursWork.Text = row.Cells[3].Value.ToString();
-            textBoxRatePerDay.Text = row.Cells[4].Value.ToString();
-            textBoxGrossMonthlyIncome.Text = row.Cells[5].Value.ToString();
+                textBoxEmpID.Text = row.Cells[0].Value.ToString();
+                textBoxFName.Text = row.Cells[6].Value.ToString();
+                textBoxLName.Text = row.Cells[7].Value.ToString();
+                textBoxDepartment.Text = row.Cells[1].Value.ToString();
+                textBoxPosition.Text = row.Cells[2].Value.ToString();
+                textBoxHoursWork.Text = row.Cells[3].Value.ToString();
+                textBoxRatePerDay.Text = row.Cells[4].Value.ToString();
+                textBoxGrossMonthlyIncome.Text = row.Cells[5].Value.ToString();
 
-            buttonCalcNetIncome.Enabled = true;
+                buttonCalcNetIncome.Enabled = true;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Please select a valid row.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonCalcNetIncome_Click(object sender, EventArgs e)
